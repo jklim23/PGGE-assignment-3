@@ -12,14 +12,27 @@ public class FixedTouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     [HideInInspector]
     public bool Pressed;
 
-    // Use this for initialization
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()
+    {
+        OnPressed();
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        Pressed = true;
+        PointerId = eventData.pointerId;
+        PointerOld = eventData.position;
+    }
+
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        Pressed = false;
+    }
+
+    public void OnPressed()
     {
         if (Pressed)
         {
@@ -39,18 +52,4 @@ public class FixedTouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHan
             TouchDist = new Vector2();
         }
     }
-
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        Pressed = true;
-        PointerId = eventData.pointerId;
-        PointerOld = eventData.position;
-    }
-
-
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        Pressed = false;
-    }
-
 }
