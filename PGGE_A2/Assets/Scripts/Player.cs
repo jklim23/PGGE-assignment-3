@@ -42,17 +42,26 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mFsm.Add(new PlayerState_MOVEMENT(this));
-        mFsm.Add(new PlayerState_ATTACK(this));
-        mFsm.Add(new PlayerState_RELOAD(this));
-        mFsm.SetCurrentState((int)PlayerStateType.MOVEMENT);
+        IntPlayer();
     }
 
     void Update()
     {
         mFsm.Update();
         Aim();
+        WeaponFire();
+    }
 
+    public void IntPlayer()
+    {
+        mFsm.Add(new PlayerState_MOVEMENT(this));
+        mFsm.Add(new PlayerState_ATTACK(this));
+        mFsm.Add(new PlayerState_RELOAD(this));
+        mFsm.SetCurrentState((int)PlayerStateType.MOVEMENT);
+    }
+
+    public void WeaponFire()
+    {
         // For Student ----------------------------------------------------//
         // Implement the logic of button clicks for shooting. 
         //-----------------------------------------------------------------//

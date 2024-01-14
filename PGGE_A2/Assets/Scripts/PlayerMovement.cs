@@ -33,16 +33,7 @@ public class PlayerMovement : MonoBehaviour
         mCharacterController = GetComponent<CharacterController>();
     }
 
-    void Update()
-    {
-        //HandleInputs();
-        //Move();
-    }
-
-    private void FixedUpdate()
-    {
-        //ApplyGravity();
-    }
+  
 
     public void HandleInputs()
     {

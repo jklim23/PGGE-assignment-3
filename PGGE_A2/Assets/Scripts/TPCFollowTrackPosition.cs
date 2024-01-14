@@ -13,6 +13,15 @@ namespace PGGE
 
         public override void Update()
         {
+
+            NewCamPosition();
+
+            // We now call the base class Update method to take care of the
+            // position tracking.
+            base.Update();
+        }
+        public void NewCamPosition()
+        {
             // Create the initial rotation quaternion based on the 
             // camera angle offset.
             Quaternion initialRotation =
@@ -26,9 +35,6 @@ namespace PGGE
                     initialRotation,
                     Time.deltaTime * CameraConstants.Damping);
 
-            // We now call the base class Update method to take care of the
-            // position tracking.
-            base.Update();
         }
     }
 }

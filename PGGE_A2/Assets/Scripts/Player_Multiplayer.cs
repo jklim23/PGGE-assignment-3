@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using PGGE.Patterns;
 using Photon.Pun;
+using System.Security.Cryptography.X509Certificates;
 
 public class Player_Multiplayer : MonoBehaviour
 {
@@ -46,11 +47,9 @@ public class Player_Multiplayer : MonoBehaviour
     void Start()
     {
         mPhotonView = GetComponent<PhotonView>();
+        IntPlayer();
 
-        mFsm.Add(new PlayerState_Multiplayer_MOVEMENT(this));
-        mFsm.Add(new PlayerState_Multiplayer_ATTACK(this));
-        mFsm.Add(new PlayerState_Multiplayer_RELOAD(this));
-        mFsm.SetCurrentState((int)PlayerStateType.MOVEMENT);
+
     }
 
     void Update()
@@ -59,7 +58,19 @@ public class Player_Multiplayer : MonoBehaviour
 
         mFsm.Update();
         Aim();
+        FireWeapon();
+       
+    }
+    public void IntPlayer()
+    {
+        mFsm.Add(new PlayerState_Multiplayer_MOVEMENT(this));
+        mFsm.Add(new PlayerState_Multiplayer_ATTACK(this));
+        mFsm.Add(new PlayerState_Multiplayer_RELOAD(this));
+        mFsm.SetCurrentState((int)PlayerStateType.MOVEMENT);
+    }
 
+    public void FireWeapon()
+    {
         // For Student ----------------------------------------------------//
         // Implement the logic of button clicks for shooting. 
         //-----------------------------------------------------------------//
@@ -97,7 +108,6 @@ public class Player_Multiplayer : MonoBehaviour
             mAttackButtons[2] = false;
         }
     }
-
     public void Aim()
     {
         // For Student ----------------------------------------------------------//
