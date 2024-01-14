@@ -13,6 +13,10 @@ namespace PGGE
 
         public override void Update()
         {
+            TrackPlayerPos();
+        }
+        public void TrackPlayerPos()
+        {
             Vector3 targetPos = mPlayerTransform.position;
             targetPos.y += CameraConstants.CameraPositionOffset.y;
             mCameraTransform.LookAt(targetPos);

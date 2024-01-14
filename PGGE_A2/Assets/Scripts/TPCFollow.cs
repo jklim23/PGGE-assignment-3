@@ -13,6 +13,11 @@ namespace PGGE
 
         public override void Update()
         {
+            FollowPlayer();
+        }
+
+        public void FollowPlayer()
+        {
             // Now we calculate the camera transformed axes.
             // We do this because our camera's rotation might have changed
             // in the derived class Update implementations. Calculate the new 

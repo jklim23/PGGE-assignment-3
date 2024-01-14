@@ -13,6 +13,10 @@ namespace PGGE
 
         public override void Update()
         {
+            CamTopDown();
+        }
+        public void CamTopDown()
+        {
             // For topdown camera we do not use the x and z offsets.
             Vector3 targetPos = mPlayerTransform.position;
             targetPos.y += CameraConstants.CameraPositionOffset.y;

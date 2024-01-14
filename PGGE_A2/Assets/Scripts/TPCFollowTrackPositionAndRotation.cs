@@ -14,6 +14,12 @@ namespace PGGE
 
         public override void Update()
         {
+            NewCamPos();
+            base.Update();
+        }
+
+        public void NewCamPos()
+        {
             // We apply the initial rotation to the camera.
             Quaternion initialRotation =
                 Quaternion.Euler(CameraConstants.CameraAngleOffset);
@@ -25,8 +31,6 @@ namespace PGGE
                 mCameraTransform.rotation,
                 mPlayerTransform.rotation * initialRotation,
                 Time.deltaTime * CameraConstants.Damping);
-
-            base.Update();
         }
     }
 }
