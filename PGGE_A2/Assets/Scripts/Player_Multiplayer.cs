@@ -213,7 +213,7 @@ public class Player_Multiplayer : MonoBehaviour
     {
         if (mBulletPrefab == null) return;
 
-        Vector3 dir = -mGunTransform.forward.normalized;
+        Vector3 dir = mGunTransform.forward.normalized;
         Vector3 firePoint = mGunTransform.transform.position + dir *
             1.2f - mGunTransform.forward * 0.1f;
         GameObject bullet = Instantiate(mBulletPrefab, firePoint,

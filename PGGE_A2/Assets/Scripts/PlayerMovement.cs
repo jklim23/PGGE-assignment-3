@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     private bool crouch = false;
     public float mGravity = -30.0f;
     public float mJumpHeight = 1.0f;
+    
 
     private Vector3 mVelocity = new Vector3(0.0f, 0.0f, 0.0f);
 
@@ -54,14 +55,16 @@ public class PlayerMovement : MonoBehaviour
             speed = mWalkSpeed * 2.0f;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && mCharacterController.isGrounded)
         {
             jump = true;
+            
         }
 
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.Space) /*&& !mCharacterController.isGrounded && jump*/)
         {
             jump = false;
+
         }
 
         if (Input.GetKeyDown(KeyCode.Tab))
