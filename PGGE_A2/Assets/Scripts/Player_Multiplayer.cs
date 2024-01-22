@@ -134,7 +134,7 @@ public class Player_Multiplayer : MonoBehaviour
         // }
         //-----------------------------------------------------------------------//
 
-        Vector3 dir = -mGunTransform.right.normalized;
+        Vector3 dir = mGunTransform.forward.normalized;
         // Find gunpoint as mentioned in the worksheet.
         Vector3 gunpoint = mGunTransform.transform.position +
                            dir * 1.2f -
@@ -213,7 +213,7 @@ public class Player_Multiplayer : MonoBehaviour
     {
         if (mBulletPrefab == null) return;
 
-        Vector3 dir = -mGunTransform.right.normalized;
+        Vector3 dir = -mGunTransform.forward.normalized;
         Vector3 firePoint = mGunTransform.transform.position + dir *
             1.2f - mGunTransform.forward * 0.1f;
         GameObject bullet = Instantiate(mBulletPrefab, firePoint,

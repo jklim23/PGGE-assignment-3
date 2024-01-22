@@ -5,7 +5,7 @@ using PGGE;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [HideInInspector]
+    //[HideInInspector]
     public CharacterController mCharacterController;
     public Animator mAnimator;
 
