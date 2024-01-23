@@ -41,8 +41,10 @@ namespace PGGE
                 mBtnJoinRoom.SetActive(false);
                 mInpPlayerName.SetActive(false);
                 mConnectionProgress.SetActive(true);
+
                 //play audio on click 
                 mAudioSource.Play();
+
                 // we check if we are connected or not, we join if we are, 
                 // else we initiate the connection to the server.
                 if (PhotonNetwork.IsConnected)
@@ -104,10 +106,15 @@ namespace PGGE
             //added a function to move the player from the Multiplayer_launcher scene back to the main menu
             public void BackToMenu()
             {
-                //play audio on click 
-                mAudioSource.Play();
-                SceneManager.LoadScene("Menu");
+                //SceneManager.LoadScene("Menu");
+                StartCoroutine(PlayClickSound("Menu"));
                 
+            }
+            IEnumerator PlayClickSound(string scene)
+            {
+                mAudioSource.Play();
+                yield return new WaitForSeconds(1);
+                SceneManager.LoadScene(scene);
             }
         }
     }
