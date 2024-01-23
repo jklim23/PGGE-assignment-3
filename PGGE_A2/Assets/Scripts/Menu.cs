@@ -12,7 +12,6 @@ public class Menu : MonoBehaviour
         StartCoroutine(PlayClickSound("SinglePlayer"));
         //Debug.Log("Loading singleplayer game");
         //SceneManager.LoadScene("SinglePlayer");
-        
     }
 
     public void OnClickMultiPlayer()
@@ -20,7 +19,6 @@ public class Menu : MonoBehaviour
         StartCoroutine(PlayClickSound("Multiplayer_Launcher"));
         //Debug.Log("Loading multiplayer game");
         //SceneManager.LoadScene("Multiplayer_Launcher");
-
     }
     // coroutine to play click sound
     IEnumerator PlayClickSound(string scene)
